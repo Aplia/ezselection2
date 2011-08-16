@@ -140,8 +140,7 @@ class eZSelection2Type extends eZDataType
                     {
                         $identifier = $identifierArray[$index];
                     }
-
-                    $content['options'][$index] = array( 'name' => $arrayName,
+                    $content['options'][$identifier] = array( 'name' => $arrayName,
                                                          'identifier' => $identifier,
                                                          'value' => $value );
                 }
@@ -216,7 +215,7 @@ class eZSelection2Type extends eZDataType
 
         if( !empty( $contentString ) )
         {
-            $content = unserialize( $contentString );
+            $content[ 'values' ] = unserialize( $contentString );
         }
 
         return $content;
@@ -486,7 +485,7 @@ class eZSelection2Type extends eZDataType
             {
                 if( $child instanceof DomElement)
                 {
-                    $content['options'][] = array( 'name' => $child->getAttribute( 'name' ),
+                    $content['options'][ $child->getAttribute( 'identifier' ) ] = array( 'name' => $child->getAttribute( 'name' ),
                                                    'identifier' => $child->getAttribute( 'identifier' ),
                                                    'value' => $child->getAttribute( 'value' ) );
                 }
