@@ -8,16 +8,15 @@
 <script type="text/javascript" src={"javascript/ezselection2.js"|ezdesign}></script>
 
 {let id=$class_attribute.id
-     content=$class_attribute.content
-     i18n_context="extension/ezselection2/class/edit"}
+     content=$class_attribute.content}
 
 <fieldset>
-    <legend>{"Option list"|i18n($i18n_context)}</legend>
+    <legend>{"Option list"|i18n( 'extension/ezselection2/class/edit' )}</legend>
     
     <div id="option-table-{$id}"></div> 
     
     <div class="block">
-        <button id="AddRow_{$id}" class="button" type="button">{'New option'|i18n($i18n_context)}</button> 
+        <button id="AddRow_{$id}" class="button" type="button">{'New option'|i18n('extension/ezselection2/class/edit')}</button> 
     </div>
 
 </fieldset>
@@ -46,21 +45,21 @@
 
 <div class="block">
     <div class="element">
-        <label>{"Multiple choice"|i18n($i18n_context)}:</label>
+        <label>{"Multiple choice"|i18n( 'extension/ezselection2/class/edit' )}:</label>
         <input type="checkbox"
                name="ContentClass_ezselection2_multi_{$id}"
                {if $content.is_multiselect}checked="checked"{/if} />
     </div>
 
     <div class="element">
-        <label>{"Use Checkboxes"|i18n($i18n_context)}:</label>
+        <label>{"Use Checkboxes"|i18n( 'extension/ezselection2/class/edit' )}:</label>
         <input type="checkbox"
                name="ContentClass_ezselection2_checkbox_{$id}"
                {if $content.is_checkbox}checked="checked"{/if} />
     </div>
 
     <div class="element">
-        <label>{"Delimiter"|i18n($i18n_context)}:</label>
+        <label>{"Delimiter"|i18n( 'extension/ezselection2/class/edit' )}:</label>
         <input type="text"
                name="ContentClass_ezselection2_delimiter_{$id}"
                value="{$content.delimiter|wash}"
@@ -71,11 +70,11 @@
 </div>
 
 <fieldset>
-    <legend>{"Useful selection options"|i18n($i18n_context)}</legend>
+    <legend>{"Useful selection options"|i18n( 'extension/ezselection2/class/edit' )}</legend>
 
 <div class="block">
     <div class="element">
-        <label>{"Quickly add selection options. Use a comma to seperate entries"|i18n($i18n_context)}:</label>
+        <label>{"Quickly add selection options. Use a comma to seperate entries"|i18n( 'extension/ezselection2/class/edit' )}:</label>
         <input type="text" name="ContentClass_ezselection2_options2_{$id}" value="{$content.options2|wash}" size="50" />
     </div>
 </div>
