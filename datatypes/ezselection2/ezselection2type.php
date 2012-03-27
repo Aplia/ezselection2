@@ -107,6 +107,7 @@ class eZSelection2Type extends eZDataType
             $checkboxName = join( '_', array( $base, self::DATATYPESTRING.'_checkbox', $id ) );
             $multiSelectName = join( '_', array( $base, self::DATATYPESTRING.'_multi', $id ) );
             $delimiterName = join( '_', array( $base, self::DATATYPESTRING.'_delimiter', $id ) );
+            $useIdentifierNamePatternName = join( '_', array( $base, self::DATATYPESTRING.'_use_identifier_name_pattern', $id ) );
 
             $nameArray = $http->postVariable( $nameArrayName );
 
@@ -153,6 +154,7 @@ class eZSelection2Type extends eZDataType
             {
                 $content['delimiter'] = $http->postVariable( $delimiterName );
             }
+            $content['use_identifier_name_pattern'] = $http->hasPostVariable( $useIdentifierNamePatternName ) ? 1 : 0;
 
             $classAttribute->setContent( $content );
             $classAttribute->store();
@@ -332,7 +334,7 @@ class eZSelection2Type extends eZDataType
             {
                 if( in_array( $option['identifier'], $content ) )
                 {
-                    $titleArray[] = $option['name'];
+                    $titleArray[] = $classContent[ 'use_identifier_name_pattern' ] ? $option['identifier'] : $option['name'];
                 }
             }
 
@@ -456,6 +458,14 @@ class eZSelection2Type extends eZDataType
             $root->appendChild( $delimiterElement );
         }
 
+        // Checkbox - Use identifier in name pattern
+        if( isset( $content['use_identifier_name_pattern'] ) )
+        {
+            $useIdentifierNamePatternElement = $doc->createElement('use_identifier_name_pattern');
+            $useIdentifierNamePatternElement->appendChild( $doc->createCDATASection( $content['use_identifier_name_pattern'] ) );
+            $root->appendChild( $useIdentifierNamePatternElement );
+        }
+
     }
 
     function createContentFromDOM($dom)
@@ -465,14 +475,17 @@ class eZSelection2Type extends eZDataType
         $delimiterNode =  $dom->getElementsByTagName( 'delimiter' )->item(0);
         $multiselectNode =  $dom->getElementsByTagName( 'multiselect' )->item(0);
         $checkboxNode =  $dom->getElementsByTagName( 'checkbox' )->item(0);
+        $useIdentifierNamePatternNode =  $dom->getElementsByTagName( 'use_identifier_name_pattern' )->item(0);
 
         $delimiter = $delimiterNode ? $delimiterNode->nodeValue : "";
         $multiselect = $multiselectNode ? $multiselectNode->textContent : 0;
         $checkbox = $checkboxNode ? $checkboxNode->nodeValue : 0;
+        $useIidentifierNamePattern = $useIdentifierNamePatternNode ? $useIdentifierNamePatternNode->nodeValue : 0;
 
         $content['delimiter'] = $delimiter;
         $content['is_multiselect'] = intval($multiselect);
         $content['is_checkbox'] = intval($checkbox);
+        $content['use_identifier_name_pattern'] = intval($useIidentifierNamePattern);
         $content['options'] = array();
 
         $optionsNode = $dom->getElementsByTagName( 'options' )->item(0);
@@ -528,6 +541,7 @@ class eZSelection2Type extends eZDataType
                 $content['options'] = array();
                 $content['is_multiselect'] = 0;
                 $content['delimiter'] = '';
+                $content['use_identifier_name_pattern'] = 0;
             }
         }
    

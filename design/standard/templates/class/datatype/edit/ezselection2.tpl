@@ -65,6 +65,13 @@
                value="{$content.delimiter|wash}"
                size="5" />
     </div>
+
+    <div class="element">
+        <label>{"Use identifier in object name pattern"|i18n( 'extension/ezselection2/class/edit' )}:</label>
+        <input type="checkbox"
+               name="ContentClass_ezselection2_use_identifier_name_pattern_{$id}"
+               {if $content.use_identifier_name_pattern}checked="checked"{/if} />
+    </div>
     
     <div class="break"></div>
 </div>
