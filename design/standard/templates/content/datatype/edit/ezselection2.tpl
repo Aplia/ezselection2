@@ -19,7 +19,7 @@ input type="{if $classContent.is_multiselect}checkbox{else}radio{/if}" name="Con
         
 {foreach $classContent.options as $option}
     <option value="{$option.identifier|wash}"
-            {section show=$content.values|contains($option.identifier)}selected="selected"{/section}>
+            {section show=$content|contains($option.identifier)}selected="selected"{/section}>
         {$option.name|wash}
     </option>
 {/foreach}      

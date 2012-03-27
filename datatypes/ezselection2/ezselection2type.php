@@ -217,7 +217,7 @@ class eZSelection2Type extends eZDataType
 
         if( !empty( $contentString ) )
         {
-            $content[ 'values' ] = unserialize( $contentString );
+            $content = unserialize( $contentString );
         }
 
         return $content;
