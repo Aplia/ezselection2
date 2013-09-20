@@ -8,7 +8,7 @@
 {foreach $classContent.options as $option}
 <tr>
 <td>
-input type="{if $classContent.is_multiselect}checkbox{else}radio{/if}" name="ContentObjectAttribute_ezselection2_selection_{$id}[]" {if $content|contains($option.identifier)}checked="checked"{/if} value="{$option.identifier|wash(xhtml)}" />{$option.name|wash()}
+<input type="{if $classContent.is_multiselect}checkbox{else}radio{/if}" name="ContentObjectAttribute_ezselection2_selection_{$id}[]" {if $content|contains($option.identifier)}checked="checked"{/if} value="{$option.identifier|wash(xhtml)}" />{$option.name|wash()}
 </td>
 </tr>
 {/foreach}
