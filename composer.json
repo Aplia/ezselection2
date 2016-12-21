@@ -1,0 +1,12 @@
+{
+    "name": "aplia/ezselection2",
+    "description": "eZ Selection 2",
+    "keywords": ["ezextension", "datatype"],
+    "homepage": "https://bitbucket.org/aplia/library-ezselection2",
+    "type": "ezpublish-legacy-extension",
+    "license": "GPL-2.0",
+    "require": {
+        "php": ">=5.3",
+        "composer/composer": ">=1.0"
+    }
+}
