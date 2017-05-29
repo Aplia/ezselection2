@@ -133,7 +133,7 @@ class eZSelection2Type extends eZDataType
                     $arrayName = empty ( $name ) ? "" : $name;
                     $value = empty ( $valueArray[$index]) ? "" : $valueArray[$index];
 
-                    if( empty( $identifierArray[$index] ) )
+                    if ( $identifierArray[$index] == '' )
                     {
                         $identifier = $this->generateIdentifier( $arrayName, $identifierArray );
                     }
