@@ -410,6 +410,9 @@ class eZSelection2Type extends eZDataType
 
         $contentString = serialize(explode( '|', $string ));
 
+        $content = unserialize( $contentString );
+        $contentObjectAttribute->setContent( $content );
+
         $contentObjectAttribute->setAttribute( 'data_text', $contentString );
     }
 
