@@ -48,7 +48,7 @@ class eZSelection2Type extends eZDataType
     function eZSelection2Type()
     {
         $this->eZDataType( self::DATATYPESTRING,
-                           ezi18n( 'extension/ezselection2/datatypes', 'Selection 2', 'Datatype name' ),
+                           ezpI18n::tr( 'extension/ezselection2/datatypes', 'Selection 2', 'Datatype name' ),
                            array( 'serialize_supported' => true,
                                   'object_serialize_map' => array( 'data_text' => 'selection' )
                                 )
@@ -610,7 +610,7 @@ class eZSelection2Type extends eZDataType
                     case $isRequired === true and count( $selection ) == 0:
                     case $isRequired === true and count( $selection ) == 1 and empty( $selection[0] ):
                     {
-                        $contentObjectAttribute->setValidationError( ezi18n( 'extension/ezselection2/datatypes',
+                        $contentObjectAttribute->setValidationError( ezpI18n::tr( 'extension/ezselection2/datatypes',
                                                                              'This is a required field.' )
                                                                    );
                         return eZInputValidator::STATE_INVALID;
@@ -622,7 +622,7 @@ class eZSelection2Type extends eZDataType
         {
             if( $infoCollectionCheck === true and $isRequired === true )
             {
-                $contentObjectAttribute->setValidationError( ezi18n( 'extension/ezselection2/datatypes',
+                $contentObjectAttribute->setValidationError( ezpI18n::tr( 'extension/ezselection2/datatypes',
                                                                      'No POST variable. Please check your configuration.' )
                                                            );
             }
