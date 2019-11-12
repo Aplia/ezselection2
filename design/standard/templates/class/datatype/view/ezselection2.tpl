@@ -10,9 +10,11 @@
         <th>{"Value"|i18n( 'extension/ezselection2/class/view' )}</th>
     </tr>
     
-    {foreach $content.options as $index => $option}
+    {def $counter = 0}
+    {foreach $content.options as $option}
+    {set $counter = sum($counter,1)}
     <tr>
-        <td>{sum($index, 1)}.</td>
+        <td>{$counter}.</td>
         <td>{first_set($option.name|wash,"&nbsp;")}</td>
         <td>{first_set($option.identifier|wash,"&nbsp;")}</td>
         <td>{first_set($option.value|wash,"&nbsp;")}</td>
