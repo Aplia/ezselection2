@@ -45,14 +45,19 @@ class eZSelection2Type extends eZDataType
     const DATATYPESTRING = 'ezselection2';
     const CLASS_STORAGE_XML = 'data_text5';
 
+    function __construct()
+    {
+        parent::__construct( self::DATATYPESTRING,
+                             ezpI18n::tr( 'extension/ezselection2/datatypes', 'Selection 2', 'Datatype name' ),
+                             array( 'serialize_supported' => true,
+                                    'object_serialize_map' => array( 'data_text' => 'selection' )
+                                  )
+                           );
+    }
+
     function eZSelection2Type()
     {
-        $this->eZDataType( self::DATATYPESTRING,
-                           ezpI18n::tr( 'extension/ezselection2/datatypes', 'Selection 2', 'Datatype name' ),
-                           array( 'serialize_supported' => true,
-                                  'object_serialize_map' => array( 'data_text' => 'selection' )
-                                )
-                         );
+        self::__construct();
     }
 
     function initializeObjectAttribute( $contentObjectAttribute, $currentVersion, $originalContentObjectAttribute )
