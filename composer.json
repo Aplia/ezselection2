@@ -8,5 +8,10 @@
     "require": {
         "php": ">=5.3",
         "composer/composer": ">=1.0"
+    },
+    "autoload": {
+        "classmap": [
+            "datatypes/ezselection2"
+        ]
     }
 }
