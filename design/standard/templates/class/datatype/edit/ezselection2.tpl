@@ -30,7 +30,7 @@
 
             var data = [
             {/literal}{foreach $content.options as $index => $option_row}{literal}
-	        { name:"{/literal}{$option_row.name}{literal}", identifier:"{/literal}{$option_row.identifier}{literal}", value:"{/literal}{$option_row.value}{literal}"} {/literal}{if ne(inc($index),count($content.options))},{/if} {literal}
+            { name:"{/literal}{$option_row.name}{literal}", identifier:"{/literal}{$option_row.identifier}{literal}", value:"{/literal}{$option_row.value}{literal}"} {/literal}, {literal}
             {/literal}{/foreach}{literal}
                        ];
 
